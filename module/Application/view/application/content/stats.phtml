@@ -1,0 +1,21 @@
+<h3>Stats</h3>
+
+
+<div id="stats-pane">
+
+
+
+</div>
+
+<script type="text/javascript">
+  var interval = null;
+
+  function rf() {
+    $.get('/application/content/statsPane', function(result) {
+      $('#stats-pane').html(result);
+    });
+  }
+
+  setInterval(rf, 2000);
+
+</script>

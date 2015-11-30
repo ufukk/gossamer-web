@@ -1,0 +1,38 @@
+<div>
+
+<h3>Search Contents</h3>
+
+
+<div id="search-form-pane">
+
+</div>
+
+<div id="search-results">
+
+<h4>Search Results</h4>
+
+<ul id="search-result-pane">
+
+</ul>
+
+<a href="" id="load-more-link">Load next</a>
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+  
+var from = 50;
+
+$.get('/application/content/searchFormPane', function(result) {
+  $('#search-form-pane').html(result);
+});
+
+$('#load-more-link').click(function(e) {
+  loadSearchResults(from);
+  from += 50;
+  return false;
+});
+
+</script>

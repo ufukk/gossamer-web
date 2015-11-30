@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>GOSSAMER</title>
+
+<?php 
+echo $this->headLink() ->prependStylesheet($this->basePath('css/style.css'))
+    ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+    ->prependStylesheet($this->basePath('css/bootstrap.min.css'));
+?>
+<?php echo $this->headScript()
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery.min.js'))
+            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
+        ; ?>
+</head>
+
+
+<body>
+
+
+<div id="container">
+
+<div id="header">
+  
+<ul class="menu">
+<li><a href="/stats">Stats</a></li>
+<li><a href="/list">Contents</a></li>
+<li><a href="/keywords">Keywords</a></li>
+</ul>
+
+</div>
+
+
+<div id="body">
+  
+<?php echo $this->content; ?>
+
+</div>
+
+
+</div>
+
+
+</body>
+
+</html>

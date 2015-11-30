@@ -1,0 +1,24 @@
+<div>
+
+<label for="keyword-to-add">Add Keyword:</label>
+
+<input type="text" id="keyword-to-add" />
+
+<input type="submit" id="keyword-add-submit" />
+
+</div>
+
+<script type="text/javascript">
+  
+  $('#keyword-add-submit').click(function(el) {
+    $.get('/application/content/addKeyword', {keyword: $('#keyword-to-add').val()}, function(response) {
+      setTimeout(function() {
+        $.get('/application/content/keywordListPane', function(response) {
+          $('#keyword-list-pane').html(response);
+        });
+      }, 1000);
+      $('#keyword-to-add').val('');
+    });
+  });
+
+</script>

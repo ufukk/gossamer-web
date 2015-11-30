@@ -1,0 +1,28 @@
+<div id="keywords">
+
+<ul id="keywords">
+
+<?php
+  foreach($this->keywords as $keyword) {
+    ?>
+    <li>
+    <span><?php echo $keyword; ?></span> <a href="" class="keyword-remove" data-keyword="<?php echo $keyword; ?>">X</a>
+    </li>
+    <?php
+  }
+?>
+
+</ul>
+
+
+</div>
+
+<script type="text/javascript">
+  $('.keyword-remove').click(function(el) {
+    $.get('/application/content/removeKeyword', {keyword: $(this).attr('data-keyword')}, function(response) {
+      $('#keyword-list-pane').html(response);
+      return false;
+    });
+  });
+
+</script>

@@ -1,0 +1,63 @@
+<div id="search-form">
+
+<ul id="keywords">
+
+<?php 
+  foreach($this->keywords as $keyword) {
+    ?>
+    <li>
+    <a href="javascript:void(0)" class="search-keyword" id="form-keyword-<?php echo $keyword; ?>" data-keyword="<?php echo $keyword; ?>"><?php echo $keyword; ?></a>
+    </li>
+    <?php
+  }
+?>
+
+
+<li class="textfield">
+
+<input id="form-keyword-custom" />
+
+</li>
+
+<li class="submit">
+
+<input type="submit" value=" SEARCH " id="search-button">
+
+</li>
+
+</ul>
+
+
+</div>
+
+<script type="text/javascript">
+
+function loadSearchResults(from) {
+    var items = [];
+    $('#search-form>ul').children().each(function(el) {
+      if($(this).children('a').attr('data-selected') == 'selected')
+        items.push($(this).children('a').attr('data-keyword'));
+    });
+    if($('#form-keyword-custom').val().length > 2)
+      items.push($('#form-keyword-custom').val());
+
+    $.get('/application/content/searchResultsPane', {keywords: items.join(','), from: from}, function(result) {
+      $('#search-result-pane').html(result);
+    });
+  }
+
+$('.search-keyword').click(function(e) {
+  if($(this).attr('data-selected') == 'selected') {
+    $(this).attr('data-selected', '');
+    $(this).removeClass('selected-keyword');
+  } else {
+    $(this).attr('data-selected', 'selected');
+    $(this).addClass('selected-keyword');
+  }
+});
+
+$('#search-button').click(function(e) {
+  loadSearchResults(0);
+});
+
+</script>
