@@ -1,20 +1,12 @@
-<div id="keywords">
-
-<ul id="keywords">
-
-<?php
-  foreach($this->keywords as $keyword) {
-    ?>
-    <li>
-    <span><?php echo $keyword; ?></span> <a href="" class="keyword-remove" data-keyword="<?php echo $keyword; ?>">X</a>
-    </li>
-    <?php
-  }
-?>
-
-</ul>
-
-
+<div class="top10">
+	<ul id="keywords">
+		<?php foreach($this->keywords as $keyword): ?>
+			<li>
+				<span><?php echo $keyword; ?></span> 
+				<a href="" class="keyword-remove" data-keyword="<?php echo $keyword; ?>">X</a>
+			</li>
+		<?php endforeach; ?>
+	</ul>
 </div>
 
 <script type="text/javascript">

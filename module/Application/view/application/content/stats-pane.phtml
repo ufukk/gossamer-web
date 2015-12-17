@@ -1,91 +1,60 @@
 <div>
-  
-<div id="sources">
+	<div id="sources" class="panel">
+		<div class="panel-body bio-graph-info">
+			<h4>Kaynaklar</h4>
+			<ul>
+				<?php foreach ($this->sources as $source): ?>
+					<li>
+					  <span><a href="#<?php echo $source['id']; ?>"><?php echo $source['title']; ?></a></span>
 
-<h4>Kaynaklar</h4>
-<ul>
-<?php
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
 
-  foreach ($this->sources as $source) {
-    ?>
-    <li>
-      <span><a href="#<?php echo $source['id']; ?>"><?php echo $source['title']; ?></a></span>
+	<div id="numbers" class="panel left10">
+		<div class="panel-body bio-graph-info">
+			<h4>Sayılar</h4>
+			<ul class="stats-block">
+				<?php foreach($this->numbers as $title => $number): ?>
+					<li class="bottom10">
+						<div>
+							<div class="title"><?php echo $title; ?></div>
+							<div class="numbers left10">
+								<div class=""><span class="value">Toplam konum:</span> <span class="value"><?php echo $number['cursors']; ?></span></div>
+								<div class=""><span class="value">Toplam içerik:</span> <span class="value"><?php echo $number['contents']; ?></span></div>
+								<div class=""><span class="value">Son 15 dk.:</span> <span class="value"></span></div>
+								<div class=""><span class="value">Son 1 saat:</span> <span class="value"></span></div>
+								<div class=""><span class="value">Son 1 gün:</span> <span class="value"></span></div>
+							</div>
 
-    </li>
-    <?php
-  }
+						</div>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+			
+		<div style="clear: both">&nbsp;</div>
 
-?>
-</ul>
-</div>
-
-<div id="numbers">
-<h4>Sayılar</h4>
-<ul class="stats-block">
-<?php 
-  foreach($this->numbers as $title => $number) {
-    ?>
-
-    <li>
-    <div>
-    <div class="title"><?php echo $title; ?></div>
-    <div class="numbers">
-      <div class="row"><span class="label">Toplam konum:</span> <span class="value"><?php echo $number['cursors']; ?></span></div>
-      <div class="row"><span class="label">Toplam içerik:</span> <span class="value"><?php echo $number['contents']; ?></span></div>
-      <div class="row"><span class="label">Son 15 dk.:</span> <span class="value"></span></div>
-      <div class="row"><span class="label">Son 1 saat:</span> <span class="value"></span></div>
-      <div class="row"><span class="label">Son 1 gün:</span> <span class="value"></span></div>
-    
-    </div>
-
-    </div>
-
-
-    </li>
-
-    <?php
-  }
-
-?>
-
-</ul>
-
-<div style="clear: both">&nbsp;</div>
-
-<h4>İçerikler</h4>
-<ul class="content-block">
-
-<?php 
-  foreach ($this->contents as $title => $contents) {
-    ?>
-    <li>
-    <div>
-    <div class="title"><?php echo $title; ?></div>
-    <div class="contents">
-      <div class="row"><span class="label">Son toplanan içerikler</span></div>
-      <?php foreach ($contents['hits']['hits'] as $content) {
-        ?>
-        <div class="row">
-          <?php echo $content['_source']['body']; ?>
-
-        </div>
-        <?php
-      }?>
-    </div>
-
-    </div>
-
-    </li>
-
-    <?php
-  }
-?>
-
-
-</ul>
-
-
-</div>
-
-
+		<div class="panel-body bio-graph-info">
+			<h4>İçerikler</h4>
+			<ul class="content-block">
+				<?php foreach ($this->contents as $title => $contents): ?>
+					<li>
+						<div class="bottom10">
+							<div class="title"><?php echo $title; ?></div>
+							<div class="contents left10">
+								<div><span class="value">Son toplanan içerikler</span></div>
+								<?php foreach ($contents['hits']['hits'] as $content): ?>
+									<div><?php if(!empty($content['_source']['body'])) echo $content['_source']['body']; ?></div>
+								<?php endforeach;?>
+							</div>
+						</div>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+		
+	</div>
 </div>

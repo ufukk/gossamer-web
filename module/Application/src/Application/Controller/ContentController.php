@@ -30,8 +30,9 @@ class ContentController extends AbstractActionController
 
     public function statsAction() 
     {
-      $result = new ViewModel();
-      return $result;
+		$this->layout()->setVariable('currentUri', 'stats');
+		$result = new ViewModel();
+		return $result;
     }
 
     private function buildQuery($body, $type, $options = array()) 
@@ -84,8 +85,9 @@ class ContentController extends AbstractActionController
 
     public function searchAction()
     {
-      $result = new ViewModel();
-      return $result;
+		$this->layout()->setVariable('currentUri', 'list');
+		$result = new ViewModel();
+		return $result;
     }
 
     public function searchFormPaneAction()
@@ -109,9 +111,9 @@ class ContentController extends AbstractActionController
     {
       $request = $this->getRequest()->getQuery();
       $result = new ViewModel();
-      $keywords = split(',', $request['keywords']);
+      $keywords = explode(',', $request['keywords']);
       $from = isset($request['from']) ? $request['from'] : 0;
-      $limit = isset($request['limit']) ? $request['limit'] : 50;
+      $limit = isset($request['limit']) ? $request['limit'] : 10;
 
       $query = array('query' => array('bool' => array('should' => array())), 'from' => $from, 'size' => $limit);
       foreach($keywords as $keyword) {
@@ -119,17 +121,34 @@ class ContentController extends AbstractActionController
       }
       $client = ClientBuilder::create()->build();
       $contents = $client->search($this->buildQuery($query, 'contents'));
+	  
+	  $total = $contents["hits"]["total"];
+	  
+	  $pageTotal = ceil($total / $limit);
+	  $pageNow = ceil($from / 10);
+	  
+	  $start = $pageNow - 5 < 0 ? 0 : $pageNow - 5;
+	  
+	  $paginationLinks = array();
+	  for($start; ($start < $pageTotal) && ($start < $pageNow + 5); $start++) $paginationLinks[] = $start;
+	  
       if(count($contents) > 0) {
-        $result->setVariables(array('contents' => $contents['hits']['hits']));  
+        $result->setVariables(array(
+			"contents" => $contents['hits']['hits'],
+			"total" => $total,
+			"paginationLinks" => $paginationLinks,
+			"pageNow" => $pageNow,
+			"pageTotal" => $pageTotal
+		));  
       }
       $result->setTerminal(true);
       return $result;
     }
 
-    public function keywordsAction()
-    {
-      $result = new ViewModel();
-      return $result;
+    public function keywordsAction() {
+		$this->layout()->setVariable('currentUri', 'keywords');
+		$result = new ViewModel();
+		return $result;
     }
 
     public function keywordListPaneAction() 

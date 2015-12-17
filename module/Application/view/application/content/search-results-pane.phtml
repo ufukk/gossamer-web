@@ -1,20 +1,53 @@
-
 <?php 
-foreach($this->contents as $content) {
+
+$jsonArray = array();
+$jsonArray["paginationLinks"] = $this->paginationLinks;
+$jsonArray["pageNow"] = $this->pageNow;
+$jsonArray["pageTotal"] = $this->pageTotal;
+foreach($this->contents as $key => $content):
+
+	print_r($content);
+
+	$dateTime = "";
+	if($content['_source']['source'] == "facebook") $dateTime = date('d/m/Y H:i:s', strtotime($content['_source']["contentDate"]));
+	else $dateTime = date('d/m/Y H:i:s', $content['_source']['timestamp_ms']);
+	$classType = "even";
+	if($key % 2 == 0) $classType = "odd";
+	$jsonArray["body"][] = array(
+		"c" => $classType, 
+		"s" => $content['_source']['source'],
+		"b" => $content['_source']['body'],
+		"a" => $content['_source']['author']["name"],
+		"t" => $dateTime
+	);
+endforeach;
+//echo json_encode($jsonArray, true);
+exit;
 ?>
+<!--
+
+
+<tr class="gradeA <?php //echo $classType; ?>">
+	<td class="typeof"><?php //echo $content['_source']['source']; ?></td>
+	<td class="bodyof"><?php //echo $content['_source']['body']; ?></td>
+	<td class="nameof"><?php //echo $content['_source']['author']["name"]; ?></td>
+	<td class="dateof"><?php //echo date('d/m/Y H:i:s', $content['_source']['timestamp_ms']); ?></td>
+</tr>
+
+
 <li>
   <div class="row">
     <div class="column">
-      <?php echo $content['_source']['authorName']; ?>
+		<?php //echo $key . " - " . $content['_source']['author']["name"]; ?>
     </div>
     <div class="column">
-      <?php echo $content['_source']['body']; ?>
+      <?php //echo $content['_source']['body']; ?>
     </div>
     <div class="column">
-      <?php echo $content['_source']['contentDate']; ?>
+		<?php
+			//echo date('d/m/Y H:i:s', $content['_source']['timestamp_ms']);
+		?>
     </div>
   </div>
 </li>
-  <?php
-}
-?>
+-->
