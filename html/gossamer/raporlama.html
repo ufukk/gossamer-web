@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from thevectorlab.net/flatlab/horizontal_menu.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 31 Jul 2015 13:08:26 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="img/favicon.html">
+
+    <title>Gossamer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+	
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!--<link href="css/navbar-fixed-top.css" rel="stylesheet">-->
+
+      <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body class="full-width">
+
+  <section id="container" class="">
+      <!--header start-->
+      <header class="header white-bg">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="fa fa-bars"></span>
+              </button>
+
+              <!--logo start-->
+              <a href="index.html" class="logo" >Gos<span>samer</span></a>
+              <!--logo end-->
+              <div class="horizontal-menu navbar-collapse collapse ">
+                  <ul class="nav navbar-nav">
+                      <li><a href="index.html">İçerikler</a></li>
+                      <li><a href="islemler.html">İşlemler</a></li>
+                      <li class="active"><a href="raporlama.html">Raporlar</a></li>
+                      <li><a href="istatistikler.html">İstatistikler</a></li>
+                      
+                  </ul>
+
+              </div>
+
+          </div>
+
+      </header>
+      <!--header end-->
+      <!--sidebar start-->
+
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+			<div class="row">
+			<div class="col-sm-6 col-centered">
+             <div class="panel-body ">
+                              <div class="btn-group btn-group-justified col-centered">
+                                  <a class="btn btn-success" data-toggle="tab" href="#home-1">Önceki Raporlar</a>
+                                  
+                                  <a class="btn btn-danger" data-toggle="tab" href="#home-2">Yeni Rapor Oluştur</a>
+                              </div>
+							  </div>
+							  </div>
+							  <div class="tab-content">
+							  <div id="home-1" class="tab-pane active">
+                          <div class="col-sm-12">
+                      <section class="panel">
+                         <table class="table table-hover">
+                              <thead>
+                              <tr>
+                                  <th>Oluşturulma Tarihi</th>
+                                  <th>Başlık</th>
+                                  <th>Anahtar Kelimeler</th>
+                                  <th>İndirildi mi?</th>
+								  <th></th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                  <td>01.07</td>
+                                  <td>Juventus Raporu</td>
+                                  <td>Juventus, Torino</td>
+                                  <td>Evet</td>
+								  <td><button class="btn btn-info btn-xs" type="button">İndir</button></td>
+                              </tr>
+                              <tr>
+                                  <td>01.07</td>
+                                  <td>Genel Rapor</td>
+                                  <td>Galatasaray, Fenerbahçe</td>
+                                  <td>Evet</td>
+								  <td><button class="btn btn-info btn-xs" type="button">İndir</button></td>
+                              </tr>
+                              <tr>
+                                  <td>01.07</td>
+                                  <td>Fenerbahçe Raporu</td>
+								  <td>Galatasaray, Fenerbahçe</td>
+                                  <td>Evet</td>
+								   <td><button class="btn btn-info btn-xs" type="button">İndir</button></td>
+                              </tr>
+                              <tr>
+                                  <td>01.07</td>
+                                  <td>Beşiktaş Raporu</td>
+                                  <td>Galatasaray, Fenerbahçe, Beşiktaş</td>
+                                  <td>Evet</td>
+								  <td><button class="btn btn-info btn-xs" type="button">İndir</button></td>
+                              </tr>
+                              </tbody>
+                          </table>
+                          
+                      </section>
+                  </div>
+					</div>	  
+						    
+						
+							  
+							  <div id="home-2" class="tab-pane">
+                          <div class="col-sm-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              Yeni Rapor Oluştur
+                          </header>
+                          <div class="panel-body">
+                              <form role="form">
+                                  <div class="form-group">
+                                      <label>Başlangıç Tarihi</label>
+                                      <input type="date" class="form-control" >
+                                  </div>
+                                  <div class="form-group">
+                                      <label>Bitiş Tarihi</label>
+                                      <input type="date" class="form-control" >
+                                  </div>
+								  <div class="form-group">
+                                      <label>Rapor Başlığı</label>
+                                      <input type="text" class="form-control" >
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="inputSuccess" class="col-sm-2 control-label col-lg-2">Anahtar Kelimeler</label>
+                                      <div class="col-lg-10">
+                                          <div class="checkbox">
+                                      <label>
+                                          <input type="checkbox"> Gelatasıray
+                                      </label>
+                                  </div>
+
+                                          <div class="checkbox">
+                                      <label>
+                                          <input type="checkbox"> Fenerbaahjj
+                                      </label>
+                                  </div>
+<div class="checkbox">
+                                      <label>
+                                          <input type="checkbox"> Beşiiiktaş
+                                      </label>
+                                  </div>
+                                         
+
+                                      </div>
+                                  </div>
+                                  
+                                  <button type="submit" class="btn btn-info">Raporu Hazırla</button>
+                              </form>
+
+                          </div>
+                      </section>
+                  </div>
+					</div>	  
+						    
+						</div>	
+                          
+          </section>
+      </section>
+      <!--main content end-->
+      <!--footer start-->
+     
+      <!--footer end-->
+  </section>
+    <!-- js placed at the end of the document so the pages load faster -->
+   <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="assets/data-tables/DT_bootstrap.js"></script>
+    <script src="js/respond.min.js" ></script>
+
+    <!--right slidebar-->
+    <script src="js/slidebars.min.js"></script>
+
+    <!--dynamic table initialization -->
+    <script src="js/dynamic_table_init.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="js/common-scripts.js"></script>
+  
+    <!--this page plugins-->
+
+  <script type="text/javascript" src="assets/fuelux/js/spinner.min.js"></script>
+
+  <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+
+  <script type="text/javascript" src="assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+  <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+  <script type="text/javascript" src="assets/jquery-multi-select/js/jquery.multi-select.js"></script>
+
+      <script src="js/advanced-form-components.js"></script>
+  </body>
+
+<!-- Mirrored from thevectorlab.net/flatlab/horizontal_menu.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 31 Jul 2015 13:08:27 GMT -->
+</html>

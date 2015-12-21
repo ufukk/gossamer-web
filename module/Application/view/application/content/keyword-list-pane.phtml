@@ -1,13 +1,30 @@
+<?php foreach($this->keywords as $keyword): ?>
+	<div class="checkbox">
+        <label>
+			<input type="checkbox" value="<?php echo $keyword; ?>"> <?php echo $keyword; ?>
+        </label>
+    </div>
+<?php endforeach; ?>
+
+<!--
 <div class="top10">
 	<ul id="keywords">
 		<?php foreach($this->keywords as $keyword): ?>
+			<div class="checkbox">
+                <label>
+					<input type="checkbox" value="<?php echo $keyword; ?>"> <?php echo $keyword; ?>
+                </label>
+            </div>
+			
 			<li>
 				<span><?php echo $keyword; ?></span> 
 				<a href="" class="keyword-remove" data-keyword="<?php echo $keyword; ?>">X</a>
 			</li>
+			
 		<?php endforeach; ?>
 	</ul>
 </div>
+-->
 
 <script type="text/javascript">
   $('.keyword-remove').click(function(el) {

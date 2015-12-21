@@ -1,14 +1,31 @@
 <div id="search-form">
 
+	<div class="col-md-4">
+		<select id="uc_for" name="uc_for[]" multiple>
+			<?php foreach($this->keywords as $keyword): ?>
+				<option value="<?php echo $keyword; ?>"><?php echo $keyword; ?></option>
+			<?php endforeach; ?>
+		</select>
+	</div>
+
+	<div class="col-md-4">
+		<input id="form-keyword-custom" class="form-control" placeholder="Custom Value" />
+	</div>
+	
+	<div class="col-md-4">
+		<input type="submit" value="SEARCH" class="btn" id="search-button" />
+	</div>
+
+	<!--
 	<ul id="keywords">
 
-		<?php foreach($this->keywords as $keyword): ?>
+		
 			<li>
-				<a href="javascript:void(0)" class="search-keyword" id="form-keyword-<?php echo $keyword; ?>" data-keyword="<?php echo $keyword; ?>"><?php echo $keyword; ?></a>
+				<a href="javascript:void(0)" class="search-keyword" id="form-keyword-<?php echo $keyword; ?>" data-keyword=""></a>
 			</li>
-		<?php endforeach; ?>
+		
 
-		<!--
+
 			<li class="textfield">
 
 				
@@ -20,17 +37,21 @@
 				
 
 			</li>
-		-->
+
 
 	</ul>
+	-->
 	
 </div>
 
+<!--
 <div id="leftmargin">
 	<p><input id="form-keyword-custom" class="form-control" placeholder="Custom Value" /> <input type="submit" value="SEARCH" class="btn" id="search-button" /></p>
 </div>
+-->
 
 <script type="text/javascript">
+/**
 $(function() {
 	$('.search-keyword').click(function(e) {
 	  if($(this).attr('data-selected') == 'selected') {
@@ -90,4 +111,5 @@ $(function() {
 	});
 	
 });
+**/
 </script>

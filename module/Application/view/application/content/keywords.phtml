@@ -1,4 +1,112 @@
 <div class="row">
+   <div class="col-sm-6 col-centered">
+      <div class="panel-body ">
+         <div class="btn-group btn-group-justified col-centered">
+            <a class="btn btn-success" data-toggle="tab" href="#home-1">Önceki Raporlar</a>
+            <a class="btn btn-danger" data-toggle="tab" href="#home-2">Yeni Rapor Oluştur</a>
+         </div>
+      </div>
+   </div>
+   <div class="tab-content">
+      <div id="home-1" class="tab-pane active">
+         <div class="col-sm-12">
+            <section class="panel">
+               <table class="table table-hover">
+                  <thead>
+                     <tr>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Başlık</th>
+                        <th>Anahtar Kelimeler</th>
+                        <th>İndirildi mi?</th>
+                        <th></th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>01.07</td>
+                        <td>Juventus Raporu</td>
+                        <td>Juventus, Torino</td>
+                        <td>Evet</td>
+                        <td><button class="btn btn-info btn-xs" type="button">İndir</button></td>
+                     </tr>
+                     <tr>
+                        <td>01.07</td>
+                        <td>Genel Rapor</td>
+                        <td>Galatasaray, Fenerbahçe</td>
+                        <td>Evet</td>
+                        <td><button class="btn btn-info btn-xs" type="button">İndir</button></td>
+                     </tr>
+                     <tr>
+                        <td>01.07</td>
+                        <td>Fenerbahçe Raporu</td>
+                        <td>Galatasaray, Fenerbahçe</td>
+                        <td>Evet</td>
+                        <td><button class="btn btn-info btn-xs" type="button">İndir</button></td>
+                     </tr>
+                     <tr>
+                        <td>01.07</td>
+                        <td>Beşiktaş Raporu</td>
+                        <td>Galatasaray, Fenerbahçe, Beşiktaş</td>
+                        <td>Evet</td>
+                        <td><button class="btn btn-info btn-xs" type="button">İndir</button></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </section>
+         </div>
+      </div>
+      <div id="home-2" class="tab-pane">
+         <div class="col-sm-12">
+            <section class="panel">
+               <header class="panel-heading">
+                  Yeni Rapor Oluştur
+               </header>
+               <div class="panel-body">
+                  <form role="form">
+                     <div class="form-group">
+                        <label>Başlangıç Tarihi</label>
+                        <input type="date" class="form-control" >
+                     </div>
+                     <div class="form-group">
+                        <label>Bitiş Tarihi</label>
+                        <input type="date" class="form-control" >
+                     </div>
+                     <div class="form-group">
+                        <label>Rapor Başlığı</label>
+                        <input type="text" class="form-control" >
+                     </div>
+                     <div class="form-group">
+                        <label for="inputSuccess" class="col-sm-2 control-label col-lg-2">Anahtar Kelimeler</label>
+                        <div class="col-lg-10" id="keyword-list-pane">
+                           <div class="checkbox">
+                              <label>
+                              <input type="checkbox"> Gelatasıray
+                              </label>
+                           </div>
+                           <div class="checkbox">
+                              <label>
+                              <input type="checkbox"> Fenerbaahjj
+                              </label>
+                           </div>
+                           <div class="checkbox">
+                              <label>
+                              <input type="checkbox"> Beşiiiktaş
+                              </label>
+                           </div>
+                        </div>
+                     </div>
+                     <button type="submit" class="btn btn-info">Raporu Hazırla</button>
+                  </form>
+               </div>
+            </section>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+<!--
+<div class="row">
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
@@ -37,6 +145,7 @@
 
 
 </div>
+-->
 
 <script type="text/javascript">
   

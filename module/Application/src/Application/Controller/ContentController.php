@@ -12,6 +12,8 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Elasticsearch\ClientBuilder;
+use Zend\Form\Element;
+     use Zend\Form\Form;
 
 class ContentController extends AbstractActionController
 {
@@ -147,6 +149,12 @@ class ContentController extends AbstractActionController
 
     public function keywordsAction() {
 		$this->layout()->setVariable('currentUri', 'keywords');
+		$result = new ViewModel();
+		return $result;
+    }
+	
+	public function processAction() {
+		$this->layout()->setVariable('currentUri', 'process');
 		$result = new ViewModel();
 		return $result;
     }

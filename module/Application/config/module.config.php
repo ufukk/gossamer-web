@@ -22,6 +22,16 @@ return array(
                     ),
                 ),
             ),
+			'process' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/process',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Content',
+                        'action'     => 'process',
+                    ),
+                ),
+            ),
             'contentStats' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(

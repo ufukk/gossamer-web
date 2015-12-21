@@ -1,60 +1,78 @@
 <div>
-	<div id="sources" class="panel">
-		<div class="panel-body bio-graph-info">
-			<h4>Kaynaklar</h4>
-			<ul>
-				<?php foreach ($this->sources as $source): ?>
-					<li>
-					  <span><a href="#<?php echo $source['id']; ?>"><?php echo $source['title']; ?></a></span>
-
-					</li>
-				<?php endforeach; ?>
-			</ul>
-		</div>
-	</div>
-
-	<div id="numbers" class="panel left10">
-		<div class="panel-body bio-graph-info">
-			<h4>Sayılar</h4>
-			<ul class="stats-block">
-				<?php foreach($this->numbers as $title => $number): ?>
-					<li class="bottom10">
-						<div>
-							<div class="title"><?php echo $title; ?></div>
-							<div class="numbers left10">
-								<div class=""><span class="value">Toplam konum:</span> <span class="value"><?php echo $number['cursors']; ?></span></div>
-								<div class=""><span class="value">Toplam içerik:</span> <span class="value"><?php echo $number['contents']; ?></span></div>
-								<div class=""><span class="value">Son 15 dk.:</span> <span class="value"></span></div>
-								<div class=""><span class="value">Son 1 saat:</span> <span class="value"></span></div>
-								<div class=""><span class="value">Son 1 gün:</span> <span class="value"></span></div>
-							</div>
-
-						</div>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-		</div>
-			
-		<div style="clear: both">&nbsp;</div>
-
-		<div class="panel-body bio-graph-info">
-			<h4>İçerikler</h4>
-			<ul class="content-block">
-				<?php foreach ($this->contents as $title => $contents): ?>
-					<li>
-						<div class="bottom10">
-							<div class="title"><?php echo $title; ?></div>
-							<div class="contents left10">
-								<div><span class="value">Son toplanan içerikler</span></div>
-								<?php foreach ($contents['hits']['hits'] as $content): ?>
-									<div><?php if(!empty($content['_source']['body'])) echo $content['_source']['body']; ?></div>
-								<?php endforeach;?>
-							</div>
-						</div>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-		</div>
-		
-	</div>
+   <section class="panel">
+      <div class="panel-body bio-graph-info">
+         <h1>Kaynaklar</h1>
+         <div class="row">
+            <div class="panel-body ">
+               <div class="btn-group btn-group-justified col-centered">
+                  <a class="btn btn-success" data-toggle="tab" href="#facebook">Facebook</a>
+                  <a class="btn btn-danger" data-toggle="tab" href="#home-2">Twitter</a>
+                  <a class="btn btn-danger" data-toggle="tab" href="#home-3">Twitter</a>
+                  <a class="btn btn-danger" data-toggle="tab" href="#home-4">Twitter</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <div id="numbers" class="panel left10">
+   <?php foreach($this->numbers as $title => $number): ?>
+      <div class="tab-content">
+         <div id="<?php echo $title; ?>" class="tab-pane active">
+            <section class="panel">
+               <div class="user-heading alt green-bg">
+                  <a href="#">
+                  <img alt="" src="/images/<?php echo $title; ?>.png"/>
+                  </a>
+                  <h1 style="color: #fff"><?php echo $title; ?></h1>
+               </div>
+               <ul class="nav nav-pills nav-stacked">
+                  <li><a href="javascript:;"> <i class="fa fa-clock-o"></i> Toplam Konum <span class="label label-primary pull-right r-activity"><?php echo $number['cursors']; ?></span></a></li>
+                  <li><a href="javascript:;"> <i class="fa fa-clock-o"></i> Toplam İçerik <span class="label label-info pull-right r-activity"><?php echo $number['contents']; ?></span></a></li>
+                  <li><a href="javascript:;"> <i class="fa fa-clock-o"></i> Son 15 dakika <span class="label label-primary pull-right r-activity">03</span></a></li>
+                  <li><a href="javascript:;"> <i class="fa fa-clock-o"></i> Son 1 saat <span class="label label-info pull-right r-activity">10</span></a></li>
+                  <li><a href="javascript:;"> <i class="fa fa-clock-o"></i> Son 1 gün <span class="label label-primary pull-right r-activity">10</span></a></li>
+               </ul>
+            </section>
+         </div>
+      </div>
+	  <?php endforeach; ?>
+      <div class="panel-body bio-graph-info">
+         <h4>Sayılar</h4>
+         <ul class="stats-block">
+            <?php foreach($this->numbers as $title => $number): ?>
+            <li class="bottom10">
+               <div>
+                  <div class="title"><?php echo $title; ?></div>
+                  <div class="numbers left10">
+                     <div class=""><span class="value">Toplam konum:</span> <span class="value"><?php echo $number['cursors']; ?></span></div>
+                     <div class=""><span class="value">Toplam içerik:</span> <span class="value"><?php echo $number['contents']; ?></span></div>
+                     <div class=""><span class="value">Son 15 dk.:</span> <span class="value"></span></div>
+                     <div class=""><span class="value">Son 1 saat:</span> <span class="value"></span></div>
+                     <div class=""><span class="value">Son 1 gün:</span> <span class="value"></span></div>
+                  </div>
+               </div>
+            </li>
+            <?php endforeach; ?>
+         </ul>
+      </div>
+      <div style="clear: both">&nbsp;</div>
+      <div class="panel-body bio-graph-info">
+         <h4>İçerikler</h4>
+         <ul class="content-block">
+            <?php foreach ($this->contents as $title => $contents): ?>
+            <li>
+               <div class="bottom10">
+                  <div class="title"><?php echo $title; ?></div>
+                  <div class="contents left10">
+                     <div><span class="value">Son toplanan içerikler</span></div>
+                     <?php foreach ($contents['hits']['hits'] as $content): ?>
+                     <div><?php if(!empty($content['_source']['body'])) echo $content['_source']['body']; ?></div>
+                     <?php endforeach;?>
+                  </div>
+               </div>
+            </li>
+            <?php endforeach; ?>
+         </ul>
+      </div>
+   </div>
 </div>

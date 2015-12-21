@@ -97,7 +97,7 @@ echo $this->headScript()
               <div class="horizontal-menu navbar-collapse collapse ">
                   <ul class="nav navbar-nav">
                       <li<?php if($this->currentUri == "list"): ?> class="active"<?php endif; ?>><a href="/list">İçerikler</a></li>
-                      <li><a href="islemler.html">İşlemler</a></li>
+                      <li<?php if($this->currentUri == "process"): ?> class="active"<?php endif; ?>><a href="/process">İşlemler</a></li>
                       <li<?php if($this->currentUri == "keywords"): ?> class="active"<?php endif; ?>><a href="/keywords">Raporlar</a></li>
                       <li<?php if($this->currentUri == "stats"): ?> class="active"<?php endif; ?>><a href="/stats">İstatistikler</a></li>
                       
