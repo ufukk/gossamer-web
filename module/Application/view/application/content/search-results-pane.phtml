@@ -15,7 +15,8 @@ foreach($this->contents as $key => $content):
 		"s" => $content['_source']['source'],
 		"b" => $content['_source']['body'],
 		"a" => $content['_source']['author']["name"],
-		"t" => $dateTime
+		"t" => $dateTime,
+		"i" => $content['_id']
 	);
 endforeach;
 echo json_encode($jsonArray, true);

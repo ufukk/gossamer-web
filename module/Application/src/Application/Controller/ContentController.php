@@ -158,6 +158,13 @@ class ContentController extends AbstractActionController
 		$result = new ViewModel();
 		return $result;
     }
+	
+	public function sendSituationAction() {
+		echo $this->getRequest()->getPost('asd');
+		$result = new ViewModel();
+		$result->setTerminal(true);
+		return $result;
+    }
 
     public function keywordListPaneAction() 
     {

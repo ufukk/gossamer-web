@@ -20,21 +20,21 @@
                                    <div class="form-group">
                                         <label class="control-label col-md-2" style="margin-top:6px">Tarih:</label>
                                         <div class="col-md-8">
-											<select>
-												<option value="1 Gün">1 Gün</option>
-												<option value="1 Hafta">1 Hafta</option>
-												<option value="2 Hafta">2 Hafta</option>
-												<option value="3 Hafta">3 Hafta</option>
-												<option value="4 Hafta">4 Hafta</option>
-												<option value="1 Ay">1 Ay</option>
-												<option value="1 yıl">1 yıl</option>
-											  </select>
+											<select id="selections">
+												<option value="1">1 Gün</option>
+												<option value="7">1 Hafta</option>
+												<option value="14">2 Hafta</option>
+												<option value="30">1 Ay</option>
+												<option value="90">3 Ay</option>
+												<option value="360">1 Yıl</option>
+											</select>
 										</div>
                                       </div>
 									  <div class="form-group">
                                           <label class="control-label col-md-2" style="margin-top:6px">Kaynak:</label>
                                           <div class="col-md-8">
-                                              <select>
+                                              <select id="fromtypes">
+												<option value="all">Hepsi</option>
 												<option value="facebook">Facebook</option>
 												<option value="twitter">Twitter</option>
 												<option value="eksisozluk">EkşiSözlük</option>
@@ -42,16 +42,6 @@
 											  </select>
                                           </div>
                                       </div>
-                                  <div class="checkbox">
-                                      <label>
-                                          <input type="checkbox"> İşlenmiş
-                                      </label>
-                                  </div>
-                                 <div class="checkbox">
-                                      <label>
-                                          <input type="checkbox"> İşlenmemiş
-                                      </label>
-                                  </div>
                               </form>
 							  <div id="panel-inside">
 								
@@ -116,6 +106,7 @@
 			$("#panel-inside").html(result);
 		});
 		
+		/**
 		$( "#panel-inside" ).on( "click", ".search-keyword", function() {
 		  if($(this).attr('data-selected') == 'selected') {
 			$(this).attr('data-selected', '');
@@ -125,20 +116,41 @@
 			$(this).addClass('selected-keyword');
 		  }
 		});
+		**/
+		$( "#insideHtml" ).on( "click", ".ele", function() {
+			var _this = $(this);
+			_this.parents(".gradeA").fadeOut(function() {
+				$.ajax({
+					url: '/application/content/sendSituation',
+					type: 'POST',
+					data: 'type=' + _this.attr("data-type") + "&id=" + _this.val(),
+					success: function() {
+						console.log("asd");
+					}
+				});
+				$(this).remove();
+			});
+		});
 		$( "#panel-inside" ).on( "click", "#search-button", function() {
 			loadSearchResults(0);
 		});
 		function loadSearchResults(from) {
+			var selections = $("#selections").val();
+			var fromtypes = $("#fromtypes").val();
 			var items = [];
+			if($('#uc_for').val() != null) items = $('#uc_for').val();
+			
+			/**
 			$('#search-form>ul').children().each(function(el) {
 			  if($(this).children('a').attr('data-selected') == 'selected')
 				items.push($(this).children('a').attr('data-keyword'));
 			});
+			**/
 			
 			if($('#form-keyword-custom').val().length > 2)
 			  items.push($('#form-keyword-custom').val());
 		  
-			$.getJSON('/application/content/searchResultsPane', {keywords: items.join(','), from: from}, function(data) {
+			$.getJSON('/application/content/searchResultsPane', {keywords: items.join(','), from: from, time: selections, fromTypes: fromtypes}, function(data) {
 				var bodyHtml = "", paginationHtml = "", clas = "";
 				$.each(data.body, function(index, element) {
 					bodyHtml += '<tr class="gradeA '+element.c+'">';
@@ -147,9 +159,11 @@
 					bodyHtml += '<td class="nameof">'+element.a+'</td>';
 					bodyHtml += '<td class="dateof">'+element.t+'</td>';
 					bodyHtml += '<td class="typeof">';
-					bodyHtml += '<p><input type="radio" name="inl" value="pot"> Pozitif</p>';
-					bodyHtml += '<p><input type="radio" name="inl" class="not" value="not"> Nötr</p>';
-					bodyHtml += '<p><input type="radio" name="inl" class="neg" value="negatif"> Negatif</p>';
+					bodyHtml += '<form>';
+					bodyHtml += '<p><input type="radio" name="op" class="ele" data-type="pot" value="'+element.i+'"> Pozitif</p>';
+					bodyHtml += '<p><input type="radio" name="op" class="ele" data-type="not" value="'+element.i+'"> Nötr</p>';
+					bodyHtml += '<p><input type="radio" name="op" class="ele" data-type="neg" value="'+element.i+'"> Negatif</p>';
+					bodyHtml += '</form>';
 					bodyHtml += '</td>';
 					bodyHtml += '</tr>';
 				});

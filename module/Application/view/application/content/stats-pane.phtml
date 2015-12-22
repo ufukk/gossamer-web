@@ -5,19 +5,20 @@
          <div class="row">
             <div class="panel-body ">
                <div class="btn-group btn-group-justified col-centered">
-                  <a class="btn btn-success" data-toggle="tab" href="#facebook">Facebook</a>
-                  <a class="btn btn-danger" data-toggle="tab" href="#home-2">Twitter</a>
-                  <a class="btn btn-danger" data-toggle="tab" href="#home-3">Twitter</a>
-                  <a class="btn btn-danger" data-toggle="tab" href="#home-4">Twitter</a>
+                  <a class="btn btn-success" data-toggle="tab" href="#Facebook">Facebook</a>
+                  <a class="btn btn-danger" data-toggle="tab" href="#Twitter">Twitter</a>
+                  <a class="btn btn-danger" data-toggle="tab" href="#EkşiSözlük">EkşiSözlük</a>
+                  <a class="btn btn-danger" data-toggle="tab" href="#RSS">RSS</a>
                </div>
             </div>
          </div>
       </div>
    </section>
    <div id="numbers" class="panel left10">
+   <div class="tab-content">
    <?php foreach($this->numbers as $title => $number): ?>
-      <div class="tab-content">
-         <div id="<?php echo $title; ?>" class="tab-pane active">
+      
+         <div id="<?php echo $title; ?>" class="tab-pane">
             <section class="panel">
                <div class="user-heading alt green-bg">
                   <a href="#">
@@ -34,27 +35,30 @@
                </ul>
             </section>
          </div>
-      </div>
+      
 	  <?php endforeach; ?>
+	  </div>
+	  <!--
       <div class="panel-body bio-graph-info">
          <h4>Sayılar</h4>
          <ul class="stats-block">
-            <?php foreach($this->numbers as $title => $number): ?>
+            <?php //foreach($this->numbers as $title => $number): ?>
             <li class="bottom10">
                <div>
-                  <div class="title"><?php echo $title; ?></div>
+                  <div class="title"><?php //echo $title; ?></div>
                   <div class="numbers left10">
-                     <div class=""><span class="value">Toplam konum:</span> <span class="value"><?php echo $number['cursors']; ?></span></div>
-                     <div class=""><span class="value">Toplam içerik:</span> <span class="value"><?php echo $number['contents']; ?></span></div>
+                     <div class=""><span class="value">Toplam konum:</span> <span class="value"><?php //echo $number['cursors']; ?></span></div>
+                     <div class=""><span class="value">Toplam içerik:</span> <span class="value"><?php //echo $number['contents']; ?></span></div>
                      <div class=""><span class="value">Son 15 dk.:</span> <span class="value"></span></div>
                      <div class=""><span class="value">Son 1 saat:</span> <span class="value"></span></div>
                      <div class=""><span class="value">Son 1 gün:</span> <span class="value"></span></div>
                   </div>
                </div>
             </li>
-            <?php endforeach; ?>
+            <?php //endforeach; ?>
          </ul>
       </div>
+	  -->
       <div style="clear: both">&nbsp;</div>
       <div class="panel-body bio-graph-info">
          <h4>İçerikler</h4>
