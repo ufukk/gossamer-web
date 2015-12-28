@@ -1,197 +1,182 @@
 <div id="stats-pane">
-
-	<section id="container" class="">
-      
+   <section id="container" class="">
       <section id="main-content">
-              <!-- page start-->
-              
-              <div class="row">
-
-                  <div class="col-lg-12">
-                      <section class="panel">
-                          <header class="panel-heading">
-                              İçerikleri Filtrele
-                              <span class="tools pull-right">
-                                <a href="javascript:;" class="fa fa-chevron-down"></a>
-                            </span>
-                          </header>
-                          <div class="panel-body">
-                              <form class="form-inline" role="form">
-                                   <div class="form-group">
-                                        <label class="control-label col-md-2" style="margin-top:6px">Tarih:</label>
-                                        <div class="col-md-8">
-											<select id="selections">
-												<option value="1">1 Gün</option>
-												<option value="7">1 Hafta</option>
-												<option value="14">2 Hafta</option>
-												<option value="30">1 Ay</option>
-												<option value="90">3 Ay</option>
-												<option value="360">1 Yıl</option>
-											</select>
-										</div>
-                                      </div>
-									  <div class="form-group">
-                                          <label class="control-label col-md-2" style="margin-top:6px">Kaynak:</label>
-                                          <div class="col-md-8">
-                                              <select id="fromtypes">
-												<option value="all">Hepsi</option>
-												<option value="facebook">Facebook</option>
-												<option value="twitter">Twitter</option>
-												<option value="eksisozluk">EkşiSözlük</option>
-												<option value="rss">RSS</option>
-											  </select>
-                                          </div>
-                                      </div>
-                              </form>
-							  <div id="panel-inside">
-								
-							  </div>
-                          </div>
-                      </section>
-
+         <!-- page start-->
+         <div class="row">
+            <div class="col-lg-12">
+               <section class="panel">
+                  <header class="panel-heading">
+                     İçerikleri Filtrele
+                     <span class="tools pull-right">
+                     <a href="javascript:;" class="fa fa-chevron-down"></a>
+                     </span>
+                  </header>
+                  <div class="panel-body">
+                     <form class="form-inline" role="form">
+                        <div class="form-group">
+                           <label class="control-label col-md-2" style="margin-top:6px">Tarih:</label>
+                           <div class="col-md-8">
+                              <select id="selections">
+                                 <option value="1">1 Gün</option>
+                                 <option value="7">1 Hafta</option>
+                                 <option value="14">2 Hafta</option>
+                                 <option value="30">1 Ay</option>
+                                 <option value="90">3 Ay</option>
+                                 <option value="360">1 Yıl</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label class="control-label col-md-2" style="margin-top:6px">Kaynak:</label>
+                           <div class="col-md-8">
+                              <select id="fromtypes">
+                                 <option value="all">Hepsi</option>
+                                 <option value="facebook">Facebook</option>
+                                 <option value="twitter">Twitter</option>
+                                 <option value="eksisozluk">EkşiSözlük</option>
+                                 <option value="rss">RSS</option>
+                              </select>
+                           </div>
+                        </div>
+                     </form>
+                     <div id="panel-inside">
+                     </div>
                   </div>
-              </div>
-			<div class="row" id="records">
-                <div class="col-sm-12">
-              <section class="panel">
-             <header class="panel-heading panel-red">
-                              İşlemler
-                              <span class="tools pull-right">
-                                <a href="javascript:;" class="fa fa-chevron-down"></a>
-                            </span>
-                          </header>
-              <div class="panel-body">
-              <div class="adv-table">
-				  <table  class="display table table-bordered table-striped">
-				  <thead>
-				  <tr>
-					  <th>Kaynak</th>
-					  <th>İçerik</th>
-					  <th>Yazar</th>
-					  <th>Tarih</th>
-					  <th>Vaziyet</th>
-				  </tr>
-				  </thead>
-				  <tbody id="insideHtml">
-				 
-				  </tbody>
-				  
-				  </table>
-			  
-              </div>
-			  <div>
-				<ul id="paginationBlock" class="pagination">
-					
-				</ul>
-			  </div>
-              </div>
-			  
-              </section>
-              </div>
-              </div>
-              <!-- page end-->
+               </section>
+            </div>
+         </div>
+         <div class="row" id="records">
+            <div class="col-sm-12">
+               <section class="panel">
+                  <header class="panel-heading panel-red">
+                     İşlemler
+                     <span class="tools pull-right">
+                     <a href="javascript:;" class="fa fa-chevron-down"></a>
+                     </span>
+                  </header>
+                  <div class="panel-body">
+                     <div class="adv-table">
+                        <table  class="display table table-bordered table-striped">
+                           <thead>
+                              <tr>
+                                 <th>Kaynak</th>
+                                 <th>İçerik</th>
+                                 <th>Yazar</th>
+                                 <th>Tarih</th>
+                                 <th>Vaziyet</th>
+                              </tr>
+                           </thead>
+                           <tbody id="insideHtml">
+                           </tbody>
+                        </table>
+                     </div>
+                     <div>
+                        <ul id="paginationBlock" class="pagination">
+                        </ul>
+                     </div>
+                  </div>
+               </section>
+            </div>
+         </div>
+         <!-- page end-->
       </section>
       <!--main content end-->
       <!--footer start-->
-     
       <!--footer end-->
-  </section>
-
+   </section>
 </div>
-
 <script type="text/javascript">
-
-	$(function() {
-		$.get('/application/content/searchFormPane', function(result) {
-			$("#panel-inside").html(result);
-		});
-		
-		/**
-		$( "#panel-inside" ).on( "click", ".search-keyword", function() {
-		  if($(this).attr('data-selected') == 'selected') {
-			$(this).attr('data-selected', '');
-			$(this).removeClass('selected-keyword');
-		  } else {
-			$(this).attr('data-selected', 'selected');
-			$(this).addClass('selected-keyword');
-		  }
-		});
-		**/
-		$( "#insideHtml" ).on( "click", ".ele", function() {
-			var _this = $(this);
-			_this.parents(".gradeA").fadeOut(function() {
-				$.ajax({
-					url: '/application/content/sendSituation',
-					type: 'POST',
-					data: 'type=' + _this.attr("data-type") + "&id=" + _this.val(),
-					success: function() {
-						console.log("asd");
-					}
-				});
-				$(this).remove();
-			});
-		});
-		$( "#panel-inside" ).on( "click", "#search-button", function() {
-			loadSearchResults(0);
-		});
-		function loadSearchResults(from) {
-			var selections = $("#selections").val();
-			var fromtypes = $("#fromtypes").val();
-			var items = [];
-			if($('#uc_for').val() != null) items = $('#uc_for').val();
-			
-			/**
-			$('#search-form>ul').children().each(function(el) {
-			  if($(this).children('a').attr('data-selected') == 'selected')
-				items.push($(this).children('a').attr('data-keyword'));
-			});
-			**/
-			
-			if($('#form-keyword-custom').val().length > 2)
-			  items.push($('#form-keyword-custom').val());
-		  
-			$.getJSON('/application/content/searchResultsPane', {keywords: items.join(','), from: from, time: selections, fromTypes: fromtypes}, function(data) {
-				var bodyHtml = "", paginationHtml = "", clas = "";
-				$.each(data.body, function(index, element) {
-					bodyHtml += '<tr class="gradeA '+element.c+'">';
-					bodyHtml += '<td class="typeof">'+element.s+'</td>';
-					bodyHtml += '<td class="typeof">'+element.b+'</td>';
-					bodyHtml += '<td class="nameof">'+element.a+'</td>';
-					bodyHtml += '<td class="dateof">'+element.t+'</td>';
-					bodyHtml += '<td class="typeof">';
-					bodyHtml += '<form>';
-					bodyHtml += '<p><input type="radio" name="op" class="ele" data-type="pot" value="'+element.i+'"> Pozitif</p>';
-					bodyHtml += '<p><input type="radio" name="op" class="ele" data-type="not" value="'+element.i+'"> Nötr</p>';
-					bodyHtml += '<p><input type="radio" name="op" class="ele" data-type="neg" value="'+element.i+'"> Negatif</p>';
-					bodyHtml += '</form>';
-					bodyHtml += '</td>';
-					bodyHtml += '</tr>';
-				});
-				$('#insideHtml').html(bodyHtml);
-				
-				if(data.pageNow > 0) paginationHtml += linkCreator("", (data.pageNow - 1) * 10, "<");
-				$.each(data.paginationLinks, function(index, element) {
-					clas = "";
-					if(element == data.pageNow) clas = ' class="active"';
-					paginationHtml += linkCreator(clas, element * 10, element);
-				});
-				if(data.pageNow < data.pageTotal - 1) paginationHtml += linkCreator("", (data.pageNow + 1) * 10, ">");
-				$("#paginationBlock").html(paginationHtml);
-				
-				$("html, body").animate({ scrollTop: $('#records').offset().top }, 300);
-				
-			});
-		}
-	
-		function linkCreator(clas, numberData, fromData) {
-			return '<li' + clas + '><a from-data="' + numberData + '" class="paglinks">' + fromData + '</a></li>';
-		}
-		
-		$( "#paginationBlock" ).on( "click", ".paglinks", function() {
-			var fromData = $(this).attr("from-data");
-			loadSearchResults(fromData);
-		});
-		
-	});
-
+   $(function() {
+   	$.get('/application/content/searchFormPane', function(result) {
+   		$("#panel-inside").html(result);
+   	});
+   	
+   	/**
+   	$( "#panel-inside" ).on( "click", ".search-keyword", function() {
+   	  if($(this).attr('data-selected') == 'selected') {
+   		$(this).attr('data-selected', '');
+   		$(this).removeClass('selected-keyword');
+   	  } else {
+   		$(this).attr('data-selected', 'selected');
+   		$(this).addClass('selected-keyword');
+   	  }
+   	});
+   	**/
+   	$( "#insideHtml" ).on( "click", ".ele", function() {
+   		var _this = $(this);
+   		_this.parents(".gradeA").fadeOut(function() {
+   			$.ajax({
+   				url: '/application/content/sendSituation',
+   				type: 'POST',
+   				data: 'type=' + _this.attr("data-type") + "&id=" + _this.val(),
+   				success: function() {
+   					console.log("asd");
+   				}
+   			});
+   			$(this).remove();
+   		});
+   	});
+   	$( "#panel-inside" ).on( "click", "#search-button", function() {
+   		loadSearchResults(0);
+   	});
+   	function loadSearchResults(from) {
+   		var selections = $("#selections").val();
+   		var fromtypes = $("#fromtypes").val();
+   		var items = [];
+   		if($('#uc_for').val() != null) items = $('#uc_for').val();
+   		
+   		/**
+   		$('#search-form>ul').children().each(function(el) {
+   		  if($(this).children('a').attr('data-selected') == 'selected')
+   			items.push($(this).children('a').attr('data-keyword'));
+   		});
+   		**/
+   		
+   		if($('#form-keyword-custom').val().length > 2)
+   		  items.push($('#form-keyword-custom').val());
+   	  
+   		$.getJSON('/application/content/searchResultsPane', {keywords: items.join(','), from: from, time: selections, fromTypes: fromtypes}, function(data) {
+   			var bodyHtml = "", paginationHtml = "", clas = "";
+   			$.each(data.body, function(index, element) {
+   				bodyHtml += '<tr class="gradeA '+element.c+'">';
+   				bodyHtml += '<td class="typeof">'+element.s+'</td>';
+   				bodyHtml += '<td class="typeof">'+element.b+'</td>';
+   				bodyHtml += '<td class="nameof">'+element.a+'</td>';
+   				bodyHtml += '<td class="dateof">'+element.t+'</td>';
+   				bodyHtml += '<td class="typeof">';
+   				bodyHtml += '<form>';
+   				bodyHtml += '<p><input type="radio" name="op" class="ele" data-type="pot" value="'+element.i+'"> Pozitif</p>';
+   				bodyHtml += '<p><input type="radio" name="op" class="ele" data-type="not" value="'+element.i+'"> Nötr</p>';
+   				bodyHtml += '<p><input type="radio" name="op" class="ele" data-type="neg" value="'+element.i+'"> Negatif</p>';
+   				bodyHtml += '</form>';
+   				bodyHtml += '</td>';
+   				bodyHtml += '</tr>';
+   			});
+   			$('#insideHtml').html(bodyHtml);
+   			
+   			if(data.pageNow > 0) paginationHtml += linkCreator("", (data.pageNow - 1) * 10, "<");
+   			$.each(data.paginationLinks, function(index, element) {
+   				clas = "";
+   				if(element == data.pageNow) clas = ' class="active"';
+   				paginationHtml += linkCreator(clas, element * 10, element);
+   			});
+   			if(data.pageNow < data.pageTotal - 1) paginationHtml += linkCreator("", (data.pageNow + 1) * 10, ">");
+   			$("#paginationBlock").html(paginationHtml);
+   			
+   			$("html, body").animate({ scrollTop: $('#records').offset().top }, 300);
+   			
+   		});
+   	}
+   
+   	function linkCreator(clas, numberData, fromData) {
+   		return '<li' + clas + '><a from-data="' + numberData + '" class="paglinks">' + fromData + '</a></li>';
+   	}
+   	
+   	$( "#paginationBlock" ).on( "click", ".paglinks", function() {
+   		var fromData = $(this).attr("from-data");
+   		loadSearchResults(fromData);
+   	});
+   	
+   });
+   
 </script>

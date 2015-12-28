@@ -13,7 +13,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Elasticsearch\ClientBuilder;
 use Zend\Form\Element;
-     use Zend\Form\Form;
+use Zend\Form\Form;
 
 class ContentController extends AbstractActionController
 {

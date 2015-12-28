@@ -15,9 +15,8 @@
       </div>
    </section>
    <div id="numbers" class="panel left10">
-   <div class="tab-content">
-   <?php foreach($this->numbers as $title => $number): ?>
-      
+      <div class="tab-content">
+         <?php foreach($this->numbers as $title => $number): ?>
          <div id="<?php echo $title; ?>" class="tab-pane">
             <section class="panel">
                <div class="user-heading alt green-bg">
@@ -35,48 +34,86 @@
                </ul>
             </section>
          </div>
-      
-	  <?php endforeach; ?>
-	  </div>
-	  <!--
-      <div class="panel-body bio-graph-info">
-         <h4>Sayılar</h4>
-         <ul class="stats-block">
-            <?php //foreach($this->numbers as $title => $number): ?>
-            <li class="bottom10">
-               <div>
-                  <div class="title"><?php //echo $title; ?></div>
-                  <div class="numbers left10">
-                     <div class=""><span class="value">Toplam konum:</span> <span class="value"><?php //echo $number['cursors']; ?></span></div>
-                     <div class=""><span class="value">Toplam içerik:</span> <span class="value"><?php //echo $number['contents']; ?></span></div>
-                     <div class=""><span class="value">Son 15 dk.:</span> <span class="value"></span></div>
-                     <div class=""><span class="value">Son 1 saat:</span> <span class="value"></span></div>
-                     <div class=""><span class="value">Son 1 gün:</span> <span class="value"></span></div>
-                  </div>
-               </div>
-            </li>
-            <?php //endforeach; ?>
-         </ul>
+         <?php endforeach; ?>
       </div>
-	  -->
-      <div style="clear: both">&nbsp;</div>
-      <div class="panel-body bio-graph-info">
-         <h4>İçerikler</h4>
-         <ul class="content-block">
-            <?php foreach ($this->contents as $title => $contents): ?>
-            <li>
-               <div class="bottom10">
-                  <div class="title"><?php echo $title; ?></div>
-                  <div class="contents left10">
-                     <div><span class="value">Son toplanan içerikler</span></div>
-                     <?php foreach ($contents['hits']['hits'] as $content): ?>
-                     <div><?php if(!empty($content['_source']['body'])) echo $content['_source']['body']; ?></div>
-                     <?php endforeach;?>
+      <!--
+         <div class="panel-body bio-graph-info">
+            <h4>Sayılar</h4>
+            <ul class="stats-block">
+               <?php //foreach($this->numbers as $title => $number): ?>
+               <li class="bottom10">
+                  <div>
+                     <div class="title"><?php //echo $title; ?></div>
+                     <div class="numbers left10">
+                        <div class=""><span class="value">Toplam konum:</span> <span class="value"><?php //echo $number['cursors']; ?></span></div>
+                        <div class=""><span class="value">Toplam içerik:</span> <span class="value"><?php //echo $number['contents']; ?></span></div>
+                        <div class=""><span class="value">Son 15 dk.:</span> <span class="value"></span></div>
+                        <div class=""><span class="value">Son 1 saat:</span> <span class="value"></span></div>
+                        <div class=""><span class="value">Son 1 gün:</span> <span class="value"></span></div>
+                     </div>
                   </div>
+               </li>
+               <?php //endforeach; ?>
+            </ul>
+         </div>
+         -->
+   </div>
+   <div style="clear: both">&nbsp;</div>
+   <div class="panel panel-body bio-graph-info">
+      <h4>İçerikler</h4>
+      <ul class="content-block">
+		<div class="adv-table">
+            <table  class="display table table-bordered table-striped">
+                <thead>
+                    <tr>
+						<th>Kaynak</th>
+                        <th>İçerik</th>
+                        <th>Yazar</th>
+                        <th>Tarih</th>
+                    </tr>
+                </thead>
+                <tbody id="insideHtml">
+					
+				
+					<?php foreach ($this->contents as $title => $contents): ?>
+				
+						<?php foreach ($contents['hits']['hits'] as $content): ?>
+						
+							<tr class="gradeA">
+								<td class="typeof"><?php echo $title; ?></td>
+								<td class="typeof"><?php if(!empty($content['_source']['body'])) echo $content['_source']['body']; ?></td>
+								<td class="nameof"><?php echo $content['_source']["author"]["name"]; ?></td>
+								<?php
+									if($content['_source']['source'] == "facebook" || $content['_source']['source'] == "eksisozluk") 
+										$dateTime = date('d/m/Y H:i:s', strtotime($content['_source']["contentDate"]));
+									else 
+										$dateTime = date('d/m/Y H:i:s', $content['_source']['timestamp_ms']);
+								?>
+								<td class="dateof"><?php echo $dateTime; ?></td>
+							</tr>
+							
+						<?php endforeach; ?>
+							
+					<?php endforeach; ?>
+				
+				</tbody>
+            </table>
+        </div>
+         <?php foreach ($this->contents as $title => $contents): ?>
+		 <!--
+         <li>
+            <div class="bottom10">
+               <div class="title"><?php echo $title; ?></div>
+               <div class="contents left10">
+                  <div><span class="value">Son toplanan içerikler</span></div>
+                  <?php foreach ($contents['hits']['hits'] as $content): ?>
+                  <div><?php if(!empty($content['_source']['body'])) echo $content['_source']['body']; ?></div>
+                  <?php endforeach;?>
                </div>
-            </li>
-            <?php endforeach; ?>
-         </ul>
-      </div>
+            </div>
+         </li>
+		 -->
+         <?php endforeach; ?>
+      </ul>
    </div>
 </div>
